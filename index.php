@@ -25,6 +25,15 @@ $d->close();
 	</head>
 	<body>
 		<h1>xhprof 性能调试</h1>
+		<form role="form"  class="form-inline" action="/run.php?action=clear">
+			<div class="form-group">
+				<input type="hidden" name="action" value="clear" />
+				<input type="text" class="form-control" placeholder="批量删除，支持 *" name="name" /> 
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-default">提交</button>
+			</div>
+		</form>
 		<?php if(!empty($list)) :?>
 		<table class="table table-striped">
 			<?php foreach ($list as $key => $value) :?>

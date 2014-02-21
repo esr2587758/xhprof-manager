@@ -20,7 +20,7 @@ function shutdown_xhprof() {
 	class xhprof {
 		private static $_config = array(
 			'storeType' => 'remote',// local or remote
-			'dataFileFormat' => 'Y-m-d H:i:s',
+			'dataFileFormat' => 'Y-m-d_H:i:s',
 			'dataFilePrefix' => 'PMS',
 		);
 		

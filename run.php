@@ -6,12 +6,14 @@ define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 class Run {
 	private $_action = "view";
 	private $_filePath;
+	private $_dir;
 	
 	public function dispatch() {
 		$name = $_REQUEST['name'];
 		$name = basename($name);
 		$dir = dirname(__FILE__);
-		$this->_filePath = $dir. '/data/' . $name;
+		$this->_dir = $dir.'/data/';
+		$this->_filePath = $this->_dir . $name;
 		
 		$_action = $_GET['action'];
 		if(is_callable(array($this, $_action))){
@@ -67,6 +69,17 @@ class Run {
 		}else{
 			echo "upload failed";
 		}
+	}
+	
+	public function clear() {
+		$name = $_REQUEST['name'];
+		$name = basename($name);
+		$filePath = $this->_dir;
+		$commd = 'rm -f '.$this->_dir.$name;
+		echo $commd;
+		exec($commd);
+		$url = 'http://'.HTTP_HOST;
+		$this->redirect($url);
 	}
 }
 
